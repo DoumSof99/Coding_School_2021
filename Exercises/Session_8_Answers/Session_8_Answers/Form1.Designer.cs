@@ -30,6 +30,12 @@ namespace Session_8_Answers {
             this.AddProfessor = new DevExpress.XtraEditors.SimpleButton();
             this.ExitButton = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.ctrlStudentsListBox = new DevExpress.XtraEditors.ListBoxControl();
+            this.ctrllistBoxCourses = new DevExpress.XtraEditors.ListBoxControl();
+            this.ctrlProfessorList = new DevExpress.XtraEditors.ListBoxControl();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlStudentsListBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrllistBoxCourses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlProfessorList)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -78,8 +84,8 @@ namespace Session_8_Answers {
             this.AddProfessor.Name = "AddProfessor";
             this.AddProfessor.Size = new System.Drawing.Size(136, 54);
             this.AddProfessor.TabIndex = 3;
-            this.AddProfessor.Text = "Add Schedule...";
-            this.AddProfessor.Click += new System.EventHandler(this.AddSchedule_Click);
+            this.AddProfessor.Text = "Add Professor...";
+            this.AddProfessor.Click += new System.EventHandler(this.AddProfessor_Click);
             // 
             // ExitButton
             // 
@@ -87,7 +93,7 @@ namespace Session_8_Answers {
             this.ExitButton.Appearance.ForeColor = System.Drawing.Color.Maroon;
             this.ExitButton.Appearance.Options.UseFont = true;
             this.ExitButton.Appearance.Options.UseForeColor = true;
-            this.ExitButton.Location = new System.Drawing.Point(561, 275);
+            this.ExitButton.Location = new System.Drawing.Point(561, 412);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(75, 27);
             this.ExitButton.TabIndex = 4;
@@ -104,12 +110,36 @@ namespace Session_8_Answers {
             this.labelControl2.TabIndex = 5;
             this.labelControl2.Text = "Please make a selection: ";
             // 
+            // ctrlStudentsListBox
+            // 
+            this.ctrlStudentsListBox.Location = new System.Drawing.Point(220, 246);
+            this.ctrlStudentsListBox.Name = "ctrlStudentsListBox";
+            this.ctrlStudentsListBox.Size = new System.Drawing.Size(177, 160);
+            this.ctrlStudentsListBox.TabIndex = 6;
+            // 
+            // ctrllistBoxCourses
+            // 
+            this.ctrllistBoxCourses.Location = new System.Drawing.Point(28, 246);
+            this.ctrllistBoxCourses.Name = "ctrllistBoxCourses";
+            this.ctrllistBoxCourses.Size = new System.Drawing.Size(177, 160);
+            this.ctrllistBoxCourses.TabIndex = 7;
+            // 
+            // ctrlProfessorList
+            // 
+            this.ctrlProfessorList.Location = new System.Drawing.Point(407, 246);
+            this.ctrlProfessorList.Name = "ctrlProfessorList";
+            this.ctrlProfessorList.Size = new System.Drawing.Size(177, 160);
+            this.ctrlProfessorList.TabIndex = 8;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(648, 305);
+            this.ClientSize = new System.Drawing.Size(648, 451);
+            this.Controls.Add(this.ctrlProfessorList);
+            this.Controls.Add(this.ctrllistBoxCourses);
+            this.Controls.Add(this.ctrlStudentsListBox);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.AddProfessor);
@@ -118,6 +148,9 @@ namespace Session_8_Answers {
             this.Controls.Add(this.labelControl1);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlStudentsListBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrllistBoxCourses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlProfessorList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,5 +164,8 @@ namespace Session_8_Answers {
         private DevExpress.XtraEditors.SimpleButton AddProfessor;
         private DevExpress.XtraEditors.SimpleButton ExitButton;
         private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.ListBoxControl ctrlStudentsListBox;
+        private DevExpress.XtraEditors.ListBoxControl ctrllistBoxCourses;
+        private DevExpress.XtraEditors.ListBoxControl ctrlProfessorList;
     }
 }
