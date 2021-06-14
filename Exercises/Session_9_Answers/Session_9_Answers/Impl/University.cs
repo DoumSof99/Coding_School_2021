@@ -8,15 +8,7 @@ namespace Session_9_Answers.Impl {
     public class University : Institute {
 
         //prop
-        public List<Student> Students {
-            get; // {
-                 //  return Name;
-                 // }
-
-            set; // {
-               // value = Students;
-           // }
-        }
+        public List<Student> Students { get; set; }
         public List<Courses> Courses { get; set; }
         public List<Professor> Professors { get; set; }
 
@@ -25,7 +17,9 @@ namespace Session_9_Answers.Impl {
 
         //ctor
         public University() {
-
+            Students = new List<Student>();
+            Professors = new List<Professor>();
+            Courses = new List<Courses>();
         }
 
     }

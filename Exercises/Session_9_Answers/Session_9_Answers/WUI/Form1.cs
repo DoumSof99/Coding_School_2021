@@ -18,11 +18,11 @@ namespace Session_9_Answers {
         private const string _TxtFile = "UniversityData.txt";
         private const string _JsonFile = "UniversityData.json";
 
-        University university = new University();
+        University CodingSchool = new University();
 
-        List<Student> Students = new List<Student>();
-        List<Courses> Courses = new List<Courses>();
-        List<Professor> Professors = new List<Professor>();
+        //List<Student> Students = new List<Student>();
+        //List<Courses> Courses = new List<Courses>();
+        //List<Professor> Professors = new List<Professor>();
 
         public Form1() {
             InitializeComponent();
@@ -45,8 +45,7 @@ namespace Session_9_Answers {
             DialogResult result = form.ShowDialog();
             switch (result) {
                 case DialogResult.OK:
-    //                university.Students.Add(student);
-                    Students.Add(student);
+                    CodingSchool.Students.Add(student);
                     break;
                 case DialogResult.Cancel:
                     break;               
@@ -58,9 +57,9 @@ namespace Session_9_Answers {
         }
 
         public void RefreshStudentList() {
-        //    ctrlUniversityList.Items.Clear();
+            ctrlUniversityList.Items.Clear();
 
-            foreach (Student item in Students) {
+            foreach (Student item in CodingSchool.Students) {
                 
                 ctrlUniversityList.Items.Add(string.Format("Student: {0} {1} {2}", item.Name, item.Surname, item.Age));
             }
@@ -83,7 +82,7 @@ namespace Session_9_Answers {
             DialogResult result = form.ShowDialog(); 
             switch (result) {
                 case DialogResult.OK:
-                    Courses.Add(courses);
+                    CodingSchool.Courses.Add(courses);
                     break;
                 case DialogResult.Cancel:
                     break;
@@ -95,12 +94,11 @@ namespace Session_9_Answers {
         }
 
         public void RefreshCourseList() {
-        //    ctrlUniversityList.Items.Clear();
+            ctrlUniversityList.Items.Clear();
 
-            foreach (Courses item in Courses) {
-                // TODO: if item exists clear
+            foreach (Courses item in CodingSchool.Courses) {
+              
                 ctrlUniversityList.Items.Add(string.Format("Course: {0} {1}", item.Subject, item.Hours));
-
             }
         }
 
@@ -119,7 +117,7 @@ namespace Session_9_Answers {
             DialogResult result = form.ShowDialog();
             switch (result) {
                 case DialogResult.OK:
-                    Professors.Add(professor);
+                    CodingSchool.Professors.Add(professor);
                     break;
                 case DialogResult.Cancel:
                     break;
@@ -130,9 +128,9 @@ namespace Session_9_Answers {
         }
 
         public void RefreshProfessorList() {
-          //  ctrlUniversityList.Items.Clear();
+            ctrlUniversityList.Items.Clear();
 
-            foreach (Professor item in Professors) {
+            foreach (Professor item in CodingSchool.Professors) {
                 ctrlUniversityList.Items.Add(string.Format("Professor: {0} {1} {2}", item.Name, item.Surname, item.Age));
             }
         }
@@ -158,26 +156,47 @@ namespace Session_9_Answers {
 
         private void ctrlSerialize_Click(object sender, EventArgs e) {
 
+            SerializeToJson();
+        }
+
+        public void SerializeToJson() {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
 
-            string data = serializer.Serialize(Students);
+            string data = serializer.Serialize(CodingSchool);
 
             string path = Path.Combine(Environment.CurrentDirectory, _JsonFile);
             File.WriteAllText(path, data);
-
         }
+
 
         private void ctrlDeserialize_Click(object sender, EventArgs e) {
 
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            DeserializeFromJson();
+        }
 
-            string path = Path.Combine(Environment.CurrentDirectory, _JsonFile);
-            string data = File.ReadAllText(path);
+        public void DeserializeFromJson() {
 
-            Students = serializer.Deserialize<List<Student>>(data);
+            try {
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
 
-            RefreshStudentList();
+                string path = Path.Combine(Environment.CurrentDirectory, _JsonFile);
+
+                if (File.Exists(path)) {
+                    string data = File.ReadAllText(path);
+
+                    CodingSchool = serializer.Deserialize<University>(data);
+
+                }
+
+                RefreshStudentList();
+            }
+            catch (Exception ex) {
+
+                MessageBox.Show(ex.Message);
+            }
+
             
         }
+
     }
 }
