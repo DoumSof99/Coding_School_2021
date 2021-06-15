@@ -75,6 +75,7 @@ namespace Session_10_Answers.WUI {
             this.ctrlName.Name = "ctrlName";
             this.ctrlName.Size = new System.Drawing.Size(100, 20);
             this.ctrlName.TabIndex = 12;
+            this.ctrlName.EditValueChanged += new System.EventHandler(this.ctrlName_EditValueChanged);
             // 
             // btnCancel
             // 

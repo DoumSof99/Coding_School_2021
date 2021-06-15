@@ -34,10 +34,6 @@ namespace Session_10_Answers {
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e) {
 
-            StudentForm form = new StudentForm();
-            form.MdiParent = this;
-            form.Show();
-
             AddStudent();
         }
 
@@ -45,9 +41,11 @@ namespace Session_10_Answers {
             Student student = new Student();
 
             StudentForm form = new StudentForm();
+            form.MdiParent = this;
             form.NewStudent = student;
+            form.Show();
 
-            DialogResult result = DialogResult;
+            DialogResult result = DialogResult.OK;
             switch (result) {
                 case DialogResult.OK:
                     CodingSchool.Students.Add(student);
@@ -62,14 +60,15 @@ namespace Session_10_Answers {
        
 
         private void viewToolStripMenuItem_Click(object sender, EventArgs e) {
-            ViewForm viewForm = new ViewForm();
-            viewForm.MdiParent = this;
-
-            viewForm.ViewData = GetStudentsList();
+            ViewForm viewForm = new ViewForm {
+                MdiParent = this,
+                ViewData = GetStudentsList()
+            };
             viewForm.Show();
         }
 
         private List<string> GetStudentsList() {
+
             List<string> studentList = new List<string>();
 
             if (CodingSchool?.Students != null) { 
@@ -77,7 +76,7 @@ namespace Session_10_Answers {
 
                 foreach (Student item in CodingSchool.Students) {
 
-                    studentList.Add(string.Format("Name={0} \t Surname={1} \t RegistrationNumber={2}", item.Name, item.Surname, item.RegistrationNumber));
+                    studentList.Add(string.Format("Name={0} \t Surname={1}", item.Name, item.Surname));
                 }
             }
             else {
@@ -89,10 +88,6 @@ namespace Session_10_Answers {
 
         private void addToolStripMenuItem1_Click(object sender, EventArgs e) {
 
-            CourseForm form = new CourseForm();
-            form.MdiParent = this;
-            form.Show();
-            
             AddCourse();
         }
 
@@ -100,9 +95,11 @@ namespace Session_10_Answers {
             Course course = new Course();
 
             CourseForm form = new CourseForm();
+            form.MdiParent = this;
             form.NewCourse = course;
+            form.Show();
 
-            DialogResult result = DialogResult;
+            DialogResult result = DialogResult.OK;
             switch (result) {
                 case DialogResult.OK:
                     CodingSchool.Courses.Add(course);
@@ -144,10 +141,6 @@ namespace Session_10_Answers {
 
         private void addToolStripMenuItem2_Click(object sender, EventArgs e) {
 
-            ProfessorForm form = new ProfessorForm();
-            form.MdiParent = this;
-            form.Show();
-
             AddProfessor();
         }
 
@@ -155,9 +148,11 @@ namespace Session_10_Answers {
             Professor professor = new Professor();
 
             ProfessorForm form = new ProfessorForm();
+            form.MdiParent = this;
             form.NewProfessor = professor;
+            form.Show();
 
-            DialogResult result = DialogResult;
+            DialogResult result = DialogResult.OK;
             switch (result) {
                 case DialogResult.OK:
                     CodingSchool.Professors.Add(professor);
@@ -232,6 +227,11 @@ namespace Session_10_Answers {
             string path = Path.Combine(Environment.CurrentDirectory, _JsonFile);
             File.WriteAllText(path, data);
 
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
+            DialogResult = DialogResult.Cancel;
+            Application.Exit();
         }
     }
 }

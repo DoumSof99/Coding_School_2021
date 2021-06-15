@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Session_10_Answers.WUI {
     public partial class StudentForm : Form {
@@ -32,12 +33,16 @@ namespace Session_10_Answers.WUI {
 
                 DialogResult = DialogResult.OK;
                
-
             }
             else {
                 MessageBox.Show("Please Insert Name");
             }
 
+        }
+
+        private void ctrlName_EditValueChanged(object sender, EventArgs e) {
+
+           
         }
     }
 }
