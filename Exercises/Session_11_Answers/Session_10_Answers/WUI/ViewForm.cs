@@ -16,7 +16,9 @@ namespace Session_10_Answers.WUI {
         public EntityTypeEnum Type { get; set; }
         public University MasterData { get; set; }
 
-        private University university = new University();
+        public string LogFile { get; set; }
+
+        // private University university = new University();
 
 
         public ViewForm() {
@@ -25,73 +27,38 @@ namespace Session_10_Answers.WUI {
 
         private void ViewForm_Load(object sender, EventArgs e) {
 
+            RefreshList();
+          
+        }
+
+        public void RefreshList() {
+
+            ctrlViewList.Items.Clear();
+
             foreach (string item in ViewData) {
                 ctrlViewList.Items.Add(item);
             }
         }
 
+
         private void BtnAdd_Click(object sender, EventArgs e) {
 
-            switch (Type) {
-                case EntityTypeEnum.Course:
-                    AddEntity(EntityTypeEnum.Course);
-                    break;
-                case EntityTypeEnum.Student:
-                    AddEntity(EntityTypeEnum.Student);
-                    break;
-                case EntityTypeEnum.Professor:
-                    AddEntity(EntityTypeEnum.Professor);
-                    break;
-                default:
-                    break;
-            }
+            //switch (Type) {
+            //    case EntityTypeEnum.Course:
+            //        AddEntity(EntityTypeEnum.Course);
+            //        break;
+            //    case EntityTypeEnum.Student:
+            //        AddEntity(EntityTypeEnum.Student);
+            //        break;
+            //    case EntityTypeEnum.Professor:
+            //        AddEntity(EntityTypeEnum.Professor);
+            //        break;
+            //    default:
+            //        break;
+            //}
         }
 
-        private void AddEntity(EntityTypeEnum entityType) {
-            switch (entityType) {
-                case EntityTypeEnum.Course:
-
-                    Course courseEntity = new Course();
-                    EditForm courseForm = new EditForm();
-
-                    courseForm.Type = entityType;
-                    courseForm.EditObject = courseEntity;
-
-                    if (courseForm.ShowDialog() == DialogResult.OK) {
-                        university.Courses.Add(courseEntity);
-                    }
-
-                    break;
-                case EntityTypeEnum.Student:
-
-                    Student studentEntity = new Student();
-                    EditForm studentForm = new EditForm();
-
-                    studentForm.Type = entityType;
-                    studentForm.EditObject = studentEntity;
-
-                    if (studentForm.ShowDialog() == DialogResult.OK) {
-                        university.Students.Add(studentEntity);
-                    }
-
-                    break;
-                case EntityTypeEnum.Professor:
-                    
-                    Professor professorEntity = new Professor();
-                    EditForm professorForm = new EditForm();
-
-                    professorForm.Type = entityType;
-                    professorForm.EditObject = professorEntity;
-
-                    if (professorForm.ShowDialog() == DialogResult.OK) {
-                        university.Professors.Add(professorEntity);
-                    }
-
-                    break;
-                default:
-                    break;
-            }
-        }
+        
 
         private void ctrlViewList_SelectedIndexChanged(object sender, EventArgs e) {
 
@@ -125,6 +92,11 @@ namespace Session_10_Answers.WUI {
                 default:
                     break;
             }
+
+            EditForm form = new EditForm();
+            form.Type = Type;
+            form.EditObject = editObject;
+            form.ShowDialog();
 
         }
 
@@ -163,7 +135,47 @@ namespace Session_10_Answers.WUI {
         }
 
         private void BtnRefresh_Click(object sender, EventArgs e) {
-            ctrlViewList.Refresh();
+            RefreshListBox();
         }
+
+        private void RefreshListBox() {
+
+            Controller controller = new Controller();
+
+            switch (Type) {
+                case EntityTypeEnum.Course:
+
+                    controller.CodingSchool = MasterData;
+                    controller.LogFile = LogFile;
+
+                    ViewData = controller.GetList();
+
+                    RefreshList();
+
+                    break;
+                case EntityTypeEnum.Student:
+
+                    controller.CodingSchool = MasterData;
+                    controller.LogFile = LogFile;
+
+                    ViewData = controller.GetList();
+
+                    RefreshList();
+
+                    break;
+                case EntityTypeEnum.Professor:
+                    controller.CodingSchool = MasterData;
+                    controller.LogFile = LogFile;
+
+                    ViewData = controller.GetList();
+
+                    RefreshList();
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
     }
 }

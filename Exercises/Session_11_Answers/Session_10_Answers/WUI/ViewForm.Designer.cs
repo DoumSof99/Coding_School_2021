@@ -34,11 +34,13 @@ namespace Session_10_Answers.WUI {
             // 
             // ctrlViewList
             // 
+            this.ctrlViewList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ctrlViewList.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.ctrlViewList.Appearance.Options.UseFont = true;
             this.ctrlViewList.Location = new System.Drawing.Point(12, 49);
             this.ctrlViewList.Name = "ctrlViewList";
-            this.ctrlViewList.Size = new System.Drawing.Size(628, 380);
+            this.ctrlViewList.Size = new System.Drawing.Size(628, 389);
             this.ctrlViewList.TabIndex = 0;
             this.ctrlViewList.SelectedIndexChanged += new System.EventHandler(this.ctrlViewList_SelectedIndexChanged);
             this.ctrlViewList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ctrlViewList_MouseDoubleClick);
@@ -54,6 +56,7 @@ namespace Session_10_Answers.WUI {
             // 
             // BtnRefresh
             // 
+            this.BtnRefresh.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.BtnRefresh.Location = new System.Drawing.Point(539, 12);
             this.BtnRefresh.Name = "BtnRefresh";
             this.BtnRefresh.Size = new System.Drawing.Size(101, 31);

@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\Entity.cs" />
+    <Compile Include="Impl\Controller.cs" />
     <Compile Include="Impl\Courses.cs" />
     <Compile Include="Impl\Enums.cs" />
     <Compile Include="Impl\Grade.cs" />

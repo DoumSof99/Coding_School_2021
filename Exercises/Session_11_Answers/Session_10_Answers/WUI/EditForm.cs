@@ -15,7 +15,7 @@ namespace Session_10_Answers.WUI {
         //Properties
         public object EditObject { get; set; }
         public EntityTypeEnum Type { get; set; }
-
+        public List<string> ViewData { get; internal set; }
 
         public EditForm() {
             InitializeComponent();

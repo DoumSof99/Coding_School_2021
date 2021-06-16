@@ -246,5 +246,63 @@ namespace Session_10_Answers {
             DialogResult = DialogResult.Cancel;
             Application.Exit();
         }
+
+        private void addToolStripMenuItem_Click_1(object sender, EventArgs e) {
+            AddEntity(EntityTypeEnum.Student);
+        }
+
+        private void AddEntity(EntityTypeEnum entityType) {
+            switch (entityType) {
+                case EntityTypeEnum.Course:
+
+                    Course courseEntity = new Course();
+                    EditForm courseForm = new EditForm();
+
+                    courseForm.Type = entityType;
+                    courseForm.EditObject = courseEntity;
+
+                    if (courseForm.ShowDialog() == DialogResult.OK) {
+                        CodingSchool.Courses.Add(courseEntity);
+                    }
+
+                    break;
+                case EntityTypeEnum.Student:
+
+                    Student studentEntity = new Student();
+                    EditForm studentForm = new EditForm();
+
+                    studentForm.Type = entityType;
+                    studentForm.EditObject = studentEntity;
+
+                    if (studentForm.ShowDialog() == DialogResult.OK) {
+                        CodingSchool.Students.Add(studentEntity);
+                    }
+
+                    break;
+                case EntityTypeEnum.Professor:
+
+                    Professor professorEntity = new Professor();
+                    EditForm professorForm = new EditForm();
+
+                    professorForm.Type = entityType;
+                    professorForm.EditObject = professorEntity;
+
+                    if (professorForm.ShowDialog() == DialogResult.OK) {
+                        CodingSchool.Professors.Add(professorEntity);
+                    }
+
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void addToolStripMenuItem1_Click_1(object sender, EventArgs e) {
+            AddEntity(EntityTypeEnum.Course);
+        }
+
+        private void addToolStripMenuItem2_Click_1(object sender, EventArgs e) {
+            AddEntity(EntityTypeEnum.Professor);
+        }
     }
 }
