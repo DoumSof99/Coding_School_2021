@@ -1,0 +1,50 @@
+body{
+	font-family:Arial;
+}
+
+.top{
+	border:1px solid gray;
+	background-color: #CDCDCD;
+}
+
+h3{
+	margin-top:5px;
+	margin-left:10px;
+	margin-bottom:0px;
+}
+
+#first_img{
+	margin-left:10px;
+}
+
+.resize{
+	margin-top:5px;
+	width:30px;
+	height:30px;
+}
+
+table{
+	width:100%;
+}
+
+form{
+	padding:15px;
+	border:1px solid gray;
+}
+
+input{
+	width:500px;
+}
+
+select{
+	width:180px;
+}
+
+#checkbox{
+	width:10px;
+}
+
+
+
+
+
