@@ -1,0 +1,57 @@
+﻿@page
+@model Session_25_Web_App.Pages.ListModel
+@{
+}
+<link rel="stylesheet" href="~/css/list.css" />
+<h1>List Page</h1>
+
+<!--Display instant to the page-->
+<!--<ul>
+   for (int i = 0; i < 10; i++) {
+        <li>Item i</li>
+    }
+</ul>-->
+
+<!--Get data from Model (.cs) file and display-->
+<!--<ul>
+    for (int i = 0; i < Model.MyList.Count; i++) {
+        <li>Item Model.MyList[i]</li>
+    }
+</ul>-->
+
+<a href="/Details/0">Add Customer</a>
+
+<div>Total @Model.MyCustomer.Count customers</div>
+
+<ul>
+    @foreach (var customer in Model.MyCustomer) {
+        <li>Customer Name: @customer.Name</li>
+    }
+</ul>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>AFM</th>
+            <th>Active</th>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach (var customer in Model.MyCustomer){
+        <tr>
+            <td>@customer.Id</td>
+            <td>@customer.Name</td>
+            <td>@customer.Surname</td>
+            <td>@customer.AFM</td>
+            <td>@customer.Active</td>
+            <td><a href="Details/@customer.Id">Edit</a></td>
+        </tr>     
+        }
+    </tbody>
+</table>
+
+

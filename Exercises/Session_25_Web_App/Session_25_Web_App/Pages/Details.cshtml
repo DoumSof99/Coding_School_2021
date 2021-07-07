@@ -1,0 +1,45 @@
+﻿@page "{id}"
+@model Session_25_Web_App.Pages.DetailsModel
+@{
+}
+
+<link rel="stylesheet" href="~/css/list.css" />
+<div>
+    <form id="frmMain" method="POST">
+        <input id="txtSelectedId" type="hidden" value="@Model.SelectedListCustomer.Id">
+        <table>
+            <tr>
+                <td><label for="txtName">Name</label></td>
+                <td><input id="txtName" name="name" value="@Model.SelectedListCustomer.Name" required></td>
+            </tr>
+            <tr>
+                <td><label for="txtSurname">Surname</label></td>
+                <td><input id="txtSurname" name="surname" value="@Model.SelectedListCustomer.Surname" required></td>
+            </tr>
+            <tr>
+                <td><label for="txtAFM">AFM</label></td>
+                <td><input id="txtAFM" name="AFM" value="@Model.SelectedListCustomer.AFM" minlength="9" maxlength="9"></td>
+            </tr>
+            <tr>
+                <td><label for="txtActive">Active</label></td>
+                <td>
+                    <select id="txtActive" name="active" value="@Model.SelectedListCustomer.Active">
+                        <option>False</option>
+                        <option>True</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div style="display: flex">
+                        <button class="btn btn-warning" asp-page-handler="cancel">Cancel</button>
+                        @if (Model.SelectedListCustomer.Id > 0) {
+                            <button class="btn btn-danger" asp-page-handler="delete">Delete</button>
+                        }
+                        <button class="btn btn-success" type="submit">Save</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
